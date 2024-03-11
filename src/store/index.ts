@@ -4,7 +4,7 @@ import createPersistedState from "vuex-plugin-persistedstate";
 import { dataService } from '@/services/data.service';
 interface State {
   orders: any[],
-  restorants: any[],
+  restorants: any,
   userData:any,
   cart:{
     items:{product:any,quantity:number}[],
@@ -60,7 +60,7 @@ export default new Vuex.Store<State>({
             const orderItems=  state.cart.items.map((item)=>({
               product:item.product,
               quantity:item.quantity,
-              restorant:state.restorants.find((restorant)=>restorant.id===item.product.restorantId)
+              restorant:state.restorants.find((restorant: { id: any; })=>restorant.id===item.product.restorantId)
             }))
             const order={
               id:uuidv4(),
