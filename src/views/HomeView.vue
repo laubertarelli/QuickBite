@@ -26,7 +26,6 @@
           </ul>
           <form class="d-flex">
             <CartSummary />
-            <GoogleLogin />
           </form>
         </div>
       </div>
@@ -48,11 +47,9 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import GoogleLogin from '@/components/Login/GoogleLogin.vue'
 import CartSummary from '@/components/Cart/CartSummary.vue'
 @Options({
   components: {
-    GoogleLogin,
     CartSummary
   },
 })

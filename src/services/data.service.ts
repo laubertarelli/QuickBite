@@ -1,7 +1,7 @@
 class DataService{
 
    async getRestorants(): Promise<any[]>{
-    return await (await fetch('/api/restorants')).json();
+    return await (await fetch('.netlify/functions/restorants')).json();
    }
 
 }

@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { authService } from '@/services/auth.service';
 import Restorants from '../components/Restorants/Restorants.vue';
 import Orders from '../components/Orders/Orders.vue';
 import RestorantsNearMe from '../components/Maps/RestorantsNearMe.vue';
@@ -7,7 +6,6 @@ import AdminView from '@/views/AdminView.vue';
 import PageNotFound from '../components/Generic/PageNotFound.vue';
 import RestorantDetails from '../components/Restorants/RestorantDetails.vue';
 import OrderDetails from '../components/Orders/OrderDetails.vue';
-import GoogleLogin from '../components/Login/GoogleLogin.vue';
 import UserProfile from '../components/Admin/UserProfile.vue';
 import Billing from '../components/Admin/Billing.vue';
 import CartDetails from '../components/Cart/CartDetails.vue';
@@ -80,22 +78,10 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       component: PageNotFound,
       meta: { requiresAuth: false, title: 'Page Not Found' }
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: GoogleLogin,
-      meta: { requiresAuth: false, title: 'Login' }
     }
   ]
 });
 
-router.beforeEach(async (to, from) => {
-  if (to.meta?.requiresAuth && !authService.isLoggedIn()) {
-    const loggedIn = await authService.login();
-    if (!loggedIn) return '/login';
-  }
-});
 router.beforeResolve(async (to, from) => {
   if (to.meta?.requiresLocation) {
     try {
