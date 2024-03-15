@@ -23,10 +23,6 @@
             <li class="nav-item ">
               <router-link class="nav-link" :to="{ name: 'Admin' }">Account</router-link>
             </li>
-            <li class="nav-item ">
-              <router-link class="nav-link" to="/dummypage"><span>404</span></router-link>
-            </li>
-
           </ul>
           <form class="d-flex">
             <CartSummary />
